@@ -2,12 +2,12 @@ import pygame
 import bulletClass
 
 
-tank_T1_0 = r"..\image\tank_T1_0.png"
-tank_T1_1 = r"..\image\tank_T1_1.png"
-tank_T1_2 = r"..\image\tank_T1_2.png"
-tank_T2_0 = r"..\image\tank_T2_0.png"
-tank_T2_1 = r"..\image\tank_T2_1.png"
-tank_T2_2 = r"..\image\tank_T2_2.png"
+tank_T1_0 = r"../image/tank_T1_0.png"
+tank_T1_1 = r"../image/tank_T1_1.png"
+tank_T1_2 = r"../image/tank_T1_2.png"
+tank_T2_0 = r"../image/tank_T2_0.png"
+tank_T2_1 = r"../image/tank_T2_1.png"
+tank_T2_2 = r"../image/tank_T2_2.png"
 
        
 
@@ -15,10 +15,10 @@ class MyTank(pygame.sprite.Sprite):
     def __init__(self, playerNumber):
         pygame.sprite.Sprite.__init__(self)
         
-        # Íæ¼ÒÉúÃü
+        # ç©å®¶ç”Ÿå‘½
         self.life = True
         
-        #¡¡µÚ¼¸¸öÍæ¼Ò   Ì¹¿ËµÄÈı¸öµÈ¼¶
+        #ã€€ç¬¬å‡ ä¸ªç©å®¶   å¦å…‹çš„ä¸‰ä¸ªç­‰çº§
         if playerNumber == 1:
             self.tank_L0_image = pygame.image.load(tank_T1_0).convert_alpha()
             self.tank_L1_image = pygame.image.load(tank_T1_1).convert_alpha()
@@ -29,10 +29,10 @@ class MyTank(pygame.sprite.Sprite):
             self.tank_L2_image = pygame.image.load(tank_T2_2).convert_alpha()
         self.level = 0
         
-        # ³õÊ¼Ì¹¿ËÎª0¼¶
+        # åˆå§‹å¦å…‹ä¸º0çº§
         self.tank = self.tank_L0_image
         
-        # ÔË¶¯ÖĞµÄÁ½ÖÖÍ¼Æ¬
+        # è¿åŠ¨ä¸­çš„ä¸¤ç§å›¾ç‰‡
         self.tank_R0 = self.tank.subsurface((0, 0),(48, 48))
         self.tank_R1 = self.tank.subsurface((48, 0),(48, 48))
         self.rect = self.tank_R0.get_rect()
@@ -41,7 +41,7 @@ class MyTank(pygame.sprite.Sprite):
         if playerNumber == 2:
             self.rect.left, self.rect.top = 3 + 24 * 16, 3 + 24 * 24 
         
-        # Ì¹¿ËËÙ¶È   Ì¹¿Ë·½Ïò   Ì¹¿ËÉúÃü   ×Óµ¯ÀäÈ´
+        # å¦å…‹é€Ÿåº¦   å¦å…‹æ–¹å‘   å¦å…‹ç”Ÿå‘½   å­å¼¹å†·å´
         self.speed = 3
         self.dir_x, self.dir_y = 0, -1
         self.life = 3
@@ -50,7 +50,7 @@ class MyTank(pygame.sprite.Sprite):
         #self.bullet.rect.left, self.bullet.rect.right = 3 + 12 * 24, 3 + 24 * 24
     
     def shoot(self):
-        # ×Óµ¯
+        # å­å¼¹
         self.bullet.life = True
         self.bullet.changeImage(self.dir_x, self.dir_y)
         
@@ -103,7 +103,7 @@ class MyTank(pygame.sprite.Sprite):
             self.tank = self.tank_L2_image
         
         
-    # ·µ»ØTrue ´ú±í·¢ÉúÅö×²
+    # è¿”å›True ä»£è¡¨å‘ç”Ÿç¢°æ’
     def moveUp(self, tankGroup, brickGroup, ironGroup):
         self.rect = self.rect.move(self.speed * 0, self.speed * -1)
         self.tank_R0 = self.tank.subsurface((0, 0),(48, 48))
